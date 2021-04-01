@@ -13,8 +13,8 @@ function Landing() {
                 <img src={Logo} alt="Happy" />
 
                 <main>
-                    <h1>Leve felicidade para o mundo</h1>
-                    <p>Muitas crianças estão esperando a sua visita :)</p>
+                    <h1>Mapa de calor de doenças contagiosas</h1>
+                    <p>Acesse e veja como está sua cidade</p>
                 </main>
 
                 <div className="location">
