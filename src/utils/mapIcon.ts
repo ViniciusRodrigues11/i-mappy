@@ -3,7 +3,7 @@ import mapMarkerImg from '../images/map-marker.svg'
 
 const happyMapIcon = L.icon({
     iconUrl: mapMarkerImg,
-    iconSize: [58, 68],
+    iconSize: [80, 80],
     iconAnchor: [29, 68],
     popupAnchor: [0, -60]
   })

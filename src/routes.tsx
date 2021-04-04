@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 
-import OrphanagesMap from './pages/OrphanagesMap'
+import OrphanagesMap from './pages/InfectionsMap'
 import Landing from './pages/Landing'
 import Orphanage from './pages/Orphanage'
-import CreateOrphanage from './pages/CreateOrphanage'
+import CreateOrphanage from './pages/CreateInfection'
 
 function Routes() {
     return (

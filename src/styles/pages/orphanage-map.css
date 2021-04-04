@@ -15,6 +15,81 @@
     justify-content: space-between;
 }
 
+.filters{
+    flex: 1;
+}
+.slider{
+    margin: 18px 0;
+}
+.desease-list {
+   margin-top: 48px;
+}
+.desease-list ul li{
+    list-style: none;
+}
+.desease-list ul li label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all 0.6s;
+}
+
+.desease-list ul li label input {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    z-index: 90;
+    cursor: pointer;
+    transition: all 0.6s;
+}
+
+.desease-list ul li label span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    transition: all 0.6s;
+}
+
+.desease-list ul li label:hover input ~ span{
+    transform: rotate(90deg);
+    border-radius: 50%;
+}
+
+.desease-list ul li label input:checked ~ span{
+    background-color: #fff;
+    border: 1px solid rgb(18, 190, 27);
+    border-radius: 50%;
+}
+
+.submit button{
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #666;
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-bottom: 24px;
+    transition: all 0.6s;
+    cursor: pointer;
+}
+.submit button:hover{
+    background: rgb(235, 235, 235);
+}
+
+
 #page-map aside h2 {
     font-size: 40px;
     font-weight: 800;
