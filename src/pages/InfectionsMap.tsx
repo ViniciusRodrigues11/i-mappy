@@ -3,6 +3,7 @@ import { Map, TileLayer, Marker } from 'react-leaflet'
 import Slider from 'react-input-slider'
 import HappyMapIcon from '../utils/mapIcon'
 import api from '../services/api'
+import Mavis from '../images/MAVIS-LOGO.svg'
 import '../styles/pages/orphanage-map.css'
 
 
@@ -69,6 +70,7 @@ function InfectionsMap() {
     return (
         <div id="page-map">
             <aside>
+                <img src={Mavis} alt="logo" />
                 <header>
                     <p>Utilize os filtros para ver uma informação específica</p>
                 </header>
