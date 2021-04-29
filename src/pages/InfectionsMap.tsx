@@ -70,7 +70,7 @@ function InfectionsMap() {
     return (
         <div id="page-map">
             <aside>
-                <img src={Mavis} alt="logo" />
+                <img src={Mavis} style={{width: 80, marginBottom: 40, marginTop: 40}} alt="logo" />
                 <header>
                     <p>Utilize os filtros para ver uma informação específica</p>
                 </header>
