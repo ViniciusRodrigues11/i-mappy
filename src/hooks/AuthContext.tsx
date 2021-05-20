@@ -6,7 +6,7 @@ interface User {
   id: string;
   name: string;
   email: string;
-  avatar_url: string;
+  avatar_url?: string;
 }
 
 interface AuthState {
@@ -15,8 +15,10 @@ interface AuthState {
 }
 
 interface SignInCredentials {
+  name?: string,
   email: string;
   password: string;
+
 }
 
 interface AuthContextData {
@@ -24,6 +26,7 @@ interface AuthContextData {
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
   updateUser(user: User): void;
+  userRegister(credentials: SignInCredentials): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -43,7 +46,7 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    console.log(email)
+    
     const response = await api.post('sessions', {
       email,
       password,
@@ -78,9 +81,18 @@ const AuthProvider: React.FC = ({ children }) => {
     [data.token],
   );
 
+  const userRegister = useCallback(async ({ name, email, password }) => {
+    
+    await api.post('users', {
+      name,
+      email,
+      password,
+    });
+  }, []);
+
   return (
     <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut, updateUser }}
+      value={{ user: data.user, signIn, signOut, updateUser, userRegister }}
     >
       {children}
     </AuthContext.Provider>

@@ -5,35 +5,37 @@ import { Link, useHistory } from 'react-router-dom'
 import '../styles/pages/login.css'
 
 
-function Login() {
+function Register() {
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const [name, setName] = useState('');
 
-    const { signIn } = useAuth();
+    const { userRegister } = useAuth();
     const history = useHistory()
 
 
     const handleLogin = useCallback(async (event: FormEvent) => {
-        console.log(signIn)
+        
         event.preventDefault();
         try {
-            
-            console.log(email, pass)
-            if (email !== '' && pass !== '') {
-                await signIn({
+
+
+            if (name !== '' && email !== '' && pass !== '') {
+                await userRegister({
+                    name: name,
                     email: email,
                     password: pass
                 })
 
-                history.push('/app');
+                history.push('/login');
             }
         } catch (err) {
             console.log(err)
         }
 
 
-    }, [email, pass, signIn, history])
+    }, [name, email, pass, userRegister, history])
 
 
 
@@ -42,7 +44,15 @@ function Login() {
             <div className="backimg"></div>
             <form onSubmit={handleLogin} className="data" autoComplete="off" autoCorrect="off">
 
-                <h2>Seja Bem vindo!</h2>
+                <h2>Crie sua conta</h2>
+
+                <label htmlFor="name">Qual o seu nome?</label>
+                <input
+                    id="name"
+                    type="name"
+                    onChange={(e) => setName(e.target.value)}
+                />
+
 
                 <label htmlFor="email">Digite um e-mail válido</label>
                 <input
@@ -61,11 +71,11 @@ function Login() {
 
                 <input type="submit" value="Entrar" />
 
-
-                <Link to="/register">Crie sua conta!</Link>
+                <Link to="/login">Voltar para Login</Link>
+                
             </form>
         </div>
     )
 }
 
-export default Login;
+export default Register;

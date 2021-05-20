@@ -5,11 +5,14 @@ import { AppProvider } from './hooks';
 
 import './styles/global.css'
 import 'leaflet/dist/leaflet.css'
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <AppProvider>
-      <Routes />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </AppProvider>
 
   );
