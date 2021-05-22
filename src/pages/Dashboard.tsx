@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Sidebar from '../components/Sidebar';
 
 import '../styles/pages/landing.css'
 
@@ -7,7 +7,7 @@ import '../styles/pages/landing.css'
 function Landing() {
 
     return (
-        <h1>Admin page</h1>
+        < Sidebar />
     )
 }
 
