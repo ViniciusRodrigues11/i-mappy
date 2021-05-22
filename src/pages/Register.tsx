@@ -31,7 +31,7 @@ function Register() {
                 history.push('/login');
             }
         } catch (err) {
-            console.log(err)
+            console.log('err')
         }
 
 
@@ -69,7 +69,7 @@ function Register() {
                     onChange={(e) => setPass(e.target.value)}
                 />
 
-                <input type="submit" value="Entrar" />
+                <input type="submit" value="Registrar" />
 
                 <Link to="/login">Voltar para Login</Link>
                 

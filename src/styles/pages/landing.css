@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-#page-landing img{
+#page-landing img {
     visibility: hidden;
 }
 
@@ -24,6 +24,18 @@
     background: url(../../images/landing.svg) no-repeat 50%;
     background-position: right center;
     background-size: 50%;
+}
+
+#page-landing .content-wrapper main{
+    position: absolute;
+    bottom: 0;
+}
+#page-landing .content-wrapper .toLogin{
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid #fff;
 }
 
 #page-landing .content-wrapper main h1 {
@@ -70,4 +82,36 @@
 
 .content-wrapper .enter-app:hover {
     background: #96feff
+}
+
+@media (max-width: 600px) {
+    
+    #page-landing{
+        padding: 10px;
+    }
+    #page-landing .content-wrapper {
+        background: none;
+        justify-content: center;
+    }
+    #page-landing .content-wrapper main{
+        position: inherit;
+    }
+    #page-landing .content-wrapper main h1 {
+        font-size: 48px;
+        text-align: center;
+    }
+    #page-landing .content-wrapper main p {
+        font-size: 24px;
+        text-align: center;
+    }
+    .content-wrapper .location{
+        font-size: 16px;
+        line-height: normal;
+    }
+
+    #page-landing .content-wrapper .toLogin{
+        position: absolute;
+        top: 5px;
+    }
+
 }

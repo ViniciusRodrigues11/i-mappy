@@ -1,7 +1,7 @@
 import React, { FormEvent, useCallback, useState } from 'react';
 import { useAuth } from '../hooks/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
-
+import { useToast } from '../hooks/ToastContext';
 import '../styles/pages/login.css'
 
 
@@ -12,34 +12,36 @@ function Login() {
 
     const { signIn } = useAuth();
     const history = useHistory()
-
+    const { addToast } = useToast();
 
     const handleLogin = useCallback(async (event: FormEvent) => {
-        console.log(signIn)
+
         event.preventDefault();
         try {
-            
-            console.log(email, pass)
             if (email !== '' && pass !== '') {
                 await signIn({
                     email: email,
                     password: pass
                 })
 
-                history.push('/app');
+                history.push('/dashboard');
             }
         } catch (err) {
-            console.log(err)
+            addToast({
+                type: 'error',
+                title: 'Erro na autenticação',
+                description: 'Ocorreu um erro ao fazer login, cheque as credenciais',
+            });
         }
 
 
-    }, [email, pass, signIn, history])
+    }, [email, pass, signIn, history, addToast])
 
 
 
     return (
         <div className="container">
-            <div className="backimg"></div>
+
             <form onSubmit={handleLogin} className="data" autoComplete="off" autoCorrect="off">
 
                 <h2>Seja Bem vindo!</h2>

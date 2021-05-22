@@ -3,15 +3,13 @@ import { FiArrowRight } from 'react-icons/fi'
 import {Link} from 'react-router-dom'
 
 import '../styles/pages/landing.css'
-import Logo from '../images/Logo.svg'
 
 function Landing() {
 
     return (
         <div id="page-landing">
             <div className="content-wrapper">
-                <img src={Logo} alt="Happy" />
-
+                <Link to="/login" className="toLogin">Faça login</Link>
                 <main>
                     <h1>Mapa de calor de doenças contagiosas</h1>
                     <p>Acesse e veja como está sua cidade</p>
