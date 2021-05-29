@@ -9,7 +9,7 @@ import '../styles/pages/dash.css'
 
 
 
-function Landing() {
+function Dashboard() {
 
     return (
         <div className="container-dashboard">
@@ -37,4 +37,4 @@ function Landing() {
     )
 }
 
-export default Landing;
+export default Dashboard;

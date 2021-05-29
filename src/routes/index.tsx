@@ -9,6 +9,7 @@ import Login from '../pages/Login'
 import Register from '../pages/Register'
 
 import Dashboard from '../pages/Dashboard'
+import NewInfection from '../pages/NewInfection'
 
 const Routes: React.FC = () => (
 
@@ -23,6 +24,8 @@ const Routes: React.FC = () => (
         <Route path="/app" component={OrphanagesMap}/>
 
         <Route path="/dashboard" component={Dashboard} isPrivate/>
+
+        <Route path="/new-infection" component={NewInfection} isPrivate/>
 
     </Switch>
 
