@@ -3,7 +3,7 @@ import BarChart from '../components/BarChart';
 import DonutChart from '../components/DonutChart';
 import Sidebar from '../components/Sidebar';
 
-import '../styles/pages/landing.css'
+import '../styles/pages/dash.css'
 
 // 
 
@@ -12,34 +12,28 @@ import '../styles/pages/landing.css'
 function Landing() {
 
     return (
-        <>
+        <div className="container-dashboard">
 
             < Sidebar />
-            <div className="container_dash">
-                <h1 className="text-primary text-center py-3">Estatisticas das Doenças</h1>
-
-                <div className="row px-3">
-
-                    <div className="col-md-6">
-                        <h5 className="text-center text-danger">Doenças </h5>
+            <div className="container-charts">
+                <div className="titles">
+                    <h1>Dashboard</h1>
+                    <h4>Confira abaixo os principais dados</h4>
+                </div>
+                <div className="charts">
+                    <div>
+                        <p>Quantidade por doença</p>
                         <BarChart />
-
                     </div>
 
-
-                    <div className="col-md-6">
-                        <h5 className="text-center text-danger">Doenças</h5>
+                    <div>
+                        <p>Percentual de infecção</p>
                         <DonutChart />
                     </div>
 
-
                 </div>
-
             </div>
-
-
-
-        </>
+        </div>
     )
 }
 

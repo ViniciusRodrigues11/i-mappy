@@ -35,6 +35,7 @@ const BarChart = () => {
             // tipo do gráfico
             type="bar"
             height="240"
+            style={{minWidth: 720}}
         />
     );
 }

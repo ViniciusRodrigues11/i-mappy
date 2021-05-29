@@ -24,6 +24,7 @@ const DonutChart = () => {
             // tipo do gráfico
             type="donut"
             height="240"
+            style={{minWidth: 720}}
         />
     );
 }
