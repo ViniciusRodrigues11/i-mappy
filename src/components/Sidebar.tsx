@@ -8,13 +8,20 @@ import { Link } from 'react-router-dom';
 
 import '../styles/components/sidebar.css';
 
+
+
 export default function Sidebar() {
 
   const { goBack } = useHistory();
 
   return (
+
     <aside className="app-sidebar">
-      <img src={Logo} alt="Logo" />
+
+      <Link to="/InfectionsMap">
+        <img src={Logo} alt="Logo" />
+      </Link>
+
 
       <ul className="Buttons">
         <li>
@@ -37,5 +44,7 @@ export default function Sidebar() {
         </button>
       </footer>
     </aside>
+
+
   );
 }
