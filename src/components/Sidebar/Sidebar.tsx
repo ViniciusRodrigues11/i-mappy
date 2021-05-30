@@ -1,9 +1,9 @@
 import React from 'react';
 import { FiArrowLeft, FiBarChart2, FiPlusSquare } from 'react-icons/fi';
-import { useAuth } from '../hooks/AuthContext'
-import Logo from '../images/MAVIS-LOGO.svg';
+import { useAuth } from '../../hooks/AuthContext'
+import Logo from '../../images/MAVIS-LOGO.svg';
 import { Link } from 'react-router-dom';
-import '../styles/components/sidebar.css';
+import '../../styles/components/sidebar.css';
 
 
 export default function Sidebar() {

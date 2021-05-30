@@ -19,15 +19,32 @@ aside .Buttons {
 }
 
 aside .Buttons li {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
   list-style: none;
-  margin-top: 24px;
   border-radius: 8px;
+  transition: all 0.4s;
+}
+
+aside .Buttons li a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+  
 }
 
 aside .Buttons li:hover {
   background: #f6d365;
-  transition: 0.2s;
 }
+aside .Buttons li:hover a svg {
+  transition: all 0.4s;
+  transform: scale(1.2)
+}
+
 
 aside.app-sidebar footer a, aside.app-sidebar footer button {
   width: 48px;

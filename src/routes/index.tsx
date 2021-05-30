@@ -17,19 +17,13 @@ const Routes: React.FC = () => (
     <Switch>
 
         <Route path="/" exact component={Landing} />
-
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-
         <Route path="/app" component={OrphanagesMap}/>
-
         <Route path="/dashboard" component={Dashboard} isPrivate/>
-
         <Route path="/new-infection" component={NewInfection} isPrivate/>
 
     </Switch>
-
-
 )
 
 export default Routes

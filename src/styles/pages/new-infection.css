@@ -45,6 +45,17 @@ form.new-infection-form fieldset legend {
     padding-bottom: 24px;
 }
 
+form.new-infection-form fieldset p {
+    width: 100%;
+
+    font-size: 18px;
+    line-height: 22px;
+    color: #8fa7b3;
+ 
+    margin-bottom: 10px;
+
+}
+
 form.new-infection-form .input-block + .input-block {
     margin-top: 24px;
 }
@@ -71,6 +82,11 @@ form.new-infection-form .input-block select {
     height: 64px;
     padding: 0 16px;
 }
+
+form.new-infection-form .input-block select  {
+    padding: 10px;
+}
+
 
 form.new-infection-form button.confirm-button {
     margin-top: 64px;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, ChangeEvent, useCallback } from 'react';
 import { Map, TileLayer, Marker } from 'react-leaflet'
 import Slider from 'react-input-slider'
-import HappyMapIcon from '../utils/mapIcon'
+import {happyMapIcon} from '../utils/mapIcon'
 import api from '../services/api'
 import Mavis from '../images/MAVIS-LOGO.svg'
 import '../styles/pages/orphanage-map.css'
@@ -133,7 +133,7 @@ function InfectionsMap() {
                 {infections.map(infection => {
                     return (
                         <Marker
-                            icon={HappyMapIcon}
+                            icon={happyMapIcon}
                             position={[infection.latitude, infection.longitude]}
                             key={infection.id}
                         >

@@ -2,8 +2,9 @@ import React, { useEffect, useState, FormEvent } from "react";
 import { useHistory } from 'react-router-dom'
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet'
-import Sidebar from '../components/Sidebar'
-import HappyMapIcon from '../utils/mapIcon'
+import Sidebar from '../components/Sidebar/Sidebar'
+import { newInfectionMarker } from '../utils/mapIcon'
+import { useToast } from '../hooks/ToastContext'
 
 import '../styles/pages/new-infection.css';
 import api from "../services/api";
@@ -16,44 +17,57 @@ interface Desease {
 function NewInfection() {
 
     const history = useHistory()
-
     const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
     const [desease, setDesease] = useState('')
     const [deseaseList, setDeseaseList] = useState<Desease[]>([])
 
+    const { addToast } = useToast();
     useEffect(() => {
         api
             .get("/desease")
             .then((response) => {
                 setDeseaseList(response.data);
             })
-            .catch((error) => {
-                alert("Ocorreu um erro ao buscar os items");
+            .catch(() => {
+                addToast({
+                    title: 'Ops!',
+                    description: 'Ocorreu um erro inesperado :(',
+                    type: "error"
+                })
             })
-    }, [])
+    }, [addToast])
 
     async function handleSubmit(event: FormEvent) {
         event.preventDefault()
 
         const { latitude, longitude } = position;
 
-        const data = new FormData();
-
-        data.append('latitude', String(latitude))
-        data.append('longitude', String(longitude))
-        data.append('desease_id', desease)
-
         try {
-            await api.post('infections/new-infection', data)
-            alert('Cadastro finalizado com sucesso!')
-            history.push('/dashboard')
+            if (latitude !== 0 && longitude !== 0) {
+                await api.post('infections/new-infection', {
+                    latitude: String(latitude),
+                    longitude: String(longitude),
+                    desease_id: desease
+                })
+                addToast({
+                    title: 'Eba!',
+                    description: 'Cadastro finalizado com sucesso!',
+                    type: "success"
+                })
+                history.push('/dashboard')
+            } else {
+                addToast({
+                    title: 'Está faltando algo...',
+                    description: 'Você precisa adicionar uma localização',
+                    type: "error"
+                })
+            }
         } catch (error) {
-            console.log(data.get('latitude'))
-            console.log(data.get('longitude'))
-            console.log(data.get('desease_id'))
-
-            console.log(error)
-            alert('Ocorreu um erro ao enviar as informações')
+            addToast({
+                title: 'Ops!',
+                description: 'Ocorreu um erro ao enviar os dados',
+                type: "error"
+            })
         }
     }
 
@@ -76,8 +90,8 @@ function NewInfection() {
             <main>
                 <form onSubmit={handleSubmit} className="new-infection-form">
                     <fieldset>
-                        <legend>Dados</legend>
-
+                        <legend>Cadastro de doenças</legend>
+                        <p>Selecione sua localização</p>
                         <Map
                             center={[-8.758728, -63.885993]}
                             style={{ width: '100%', height: 280 }}
@@ -91,7 +105,7 @@ function NewInfection() {
                             {position.latitude !== 0 && (
                                 <Marker
                                     interactive={false}
-                                    icon={HappyMapIcon}
+                                    icon={newInfectionMarker}
                                     position={[position.latitude, position.longitude]}
                                 />
                             )}

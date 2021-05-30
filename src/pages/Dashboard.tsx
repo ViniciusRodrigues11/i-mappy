@@ -1,7 +1,7 @@
 import React from 'react';
 import BarChart from '../components/BarChart';
 import DonutChart from '../components/DonutChart';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar/Sidebar';
 
 import '../styles/pages/dash.css'
 
