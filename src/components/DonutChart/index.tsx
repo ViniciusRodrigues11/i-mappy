@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 
-const DonutChart = () => {
+interface DonutChartProps {
+    data: String[]
+}
+
+const DonutChart: React.FC<DonutChartProps> = (data) => {
+    const [categories, setCategories] = useState<string[]>([])
+    const [chartData, setChartData] = useState<Number[]>([])
+
+    function prepareChartData(data: String[]) {
+        let dataSet = new Set(data)
+        let headers: string[] = []
+        let values: Number[] = []
+
+        dataSet.forEach((d: String) => {
+            headers.push(d.toString())
+            values.push(data.filter((value) => { return value === d }).length)
+        })
+
+        return { headers, values }
+    }
+
+    useEffect(() => {
+        let { headers, values } = prepareChartData(data.data)
+        setCategories(headers)
+        setChartData(values)
+    }, [data])
 
     const mockData = {
-        series: [477138, 499928, 444867, 220426, 473088],
-        labels: ['Anakin', 'Barry Allen', 'Kal-El', 'Logan', 'Padmé']
+        series: chartData,
+        labels: categories
     }
 
     const options = {

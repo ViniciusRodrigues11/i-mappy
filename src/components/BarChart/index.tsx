@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 
-const BarChart = () => {
+interface BarChartProps {
+    data: String[]
+}
+
+const BarChart: React.FC<BarChartProps> = ( data ) => {
+    const [categories, setCategories] = useState<String[]>([])
+    const [chartData, setChartData] = useState<Number[]>([])
+
+    function prepareChartData(data: String[]) {
+        let dataSet = new Set(data)
+        let headers: String[] = []
+        let values: Number[] = []
+
+        dataSet.forEach((d: String) => {
+            headers.push(d)
+            values.push(data.filter((value) => { return value === d }).length)
+        })
+
+        return { headers, values }
+    }
+
+    useEffect(() => {
+        let { headers, values } = prepareChartData(data.data)
+        setCategories(headers)
+        setChartData(values)
+    }, [data])
 
     const options = {
         plotOptions: {
@@ -14,14 +39,14 @@ const BarChart = () => {
     const mockData = {
         // Dados estáticos por enquanto.
         labels: {
-            categories: ['Anakin', 'Barry Allen', 'Kal-El', 'Logan', 'Padmé']
+            categories: categories
         },
         // gráfico de barra a series é uma lista.
         series: [
             // Pode ter mais de um conjunto de dados.
             {
-                name: "% Sucesso",
-                data: [43.6, 67.1, 67.7, 45.6, 71.1]
+                name: "Número de casos",
+                data: chartData
             }
         ]
     };
